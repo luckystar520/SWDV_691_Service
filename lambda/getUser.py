@@ -4,13 +4,12 @@ import boto3
 client = boto3.client('cognito-idp')
 
 def lambda_handler(event, context):
-    '''
     print('event')
     print(event)
     
     print('context')
     print(context)
-    '''
+    
     response = {}
     
     headers = {}
@@ -22,6 +21,9 @@ def lambda_handler(event, context):
         
         try:
             user_info = client.get_user(AccessToken = access_token)
+            
+            print("User Info:")
+            print(user_info)
             
             user_attrs = user_info['UserAttributes']
             
